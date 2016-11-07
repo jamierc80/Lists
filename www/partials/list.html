@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-xs-3">
+            <button ng-click="btnBack()" class="btn btn-default">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            </button>
+            
+        </div>
+        <div class="col-xs-6">
+            <h3>Lists</h3>
+        </div>
+        <div class="col-xs-3">
+            <button data-toggle="modal" data-target="#newitem" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="col-xs-12">
+        <h5>{{ lists[index].title }}</h5>
+        </div>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="i in lists[index].items">
+            {{ i.title }}
+            <button ng-click="btnRemoveItem($index)" class="btn btn-danger btn-xs pull-right" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+        </li>
+    </ul>
+    <button data-toggle="modal" data-target="#deletelist"  class="btn btn-danger btn-lg btn-block">Delete List</button>
+</div>
+<!-- New Item Modal -->
+<div class="modal fade" id="newitem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="btnCancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Item</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" ng-model="itemname" name="itemname" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-lg" ng-click="btnNewItem()">Create</button>
+        <button type="button" class="btn btn-danger btn-lg" ng-click="btnCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Delete List Modal -->
+<div class="modal fade" id="deletelist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="btnClose()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete List</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you would like to delete this list?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-lg" ng-click="btnDeletelist()">Yes</button>
+        <button type="button" class="btn btn-danger btn-lg" ng-click="btnClose()">No</button>
+      </div>
+    </div>
+  </div>
+</div>
